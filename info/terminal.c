@@ -26,6 +26,9 @@
 
 #include <sys/types.h>
 #include <signal.h>
+#ifdef __APPLE__
+#include <sys/ioctl.h>
+#endif
 
 /* The Unix termcap interface code. */
 #ifdef HAVE_NCURSES_TERMCAP_H

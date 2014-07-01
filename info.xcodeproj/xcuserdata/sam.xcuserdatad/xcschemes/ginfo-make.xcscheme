@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "22E3BD0F1962452C00FAD4EE"
-               BuildableName = "gnulib"
-               BlueprintName = "gnulib"
+               BlueprintIdentifier = "22E3BD17196245E200FAD4EE"
+               BuildableName = "ginfo-make"
+               BlueprintName = "ginfo-make"
                ReferencedContainer = "container:info.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

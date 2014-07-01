@@ -42,8 +42,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "22E3BCD519623C2800FAD4EE"
-               BuildableName = "libgnulib.a"
+               BlueprintIdentifier = "22E3BD0F1962452C00FAD4EE"
+               BuildableName = "gnulib"
                BlueprintName = "gnulib"
                ReferencedContainer = "container:info.xcodeproj">
             </BuildableReference>

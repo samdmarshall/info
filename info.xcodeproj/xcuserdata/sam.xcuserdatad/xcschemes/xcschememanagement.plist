@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>ginfo-make.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 		<key>ginfo.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -38,6 +43,16 @@
 			<true/>
 		</dict>
 		<key>22E3BCD519623C2800FAD4EE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>22E3BD0F1962452C00FAD4EE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>22E3BD17196245E200FAD4EE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
