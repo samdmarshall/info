@@ -107,7 +107,7 @@ VFunction *window_deletion_notifier = NULL;
 void
 window_new_screen_size (int width, int height)
 {
-  register WINDOW *win;
+  register WINDOW *win = NULL;
   int delta_height, delta_each, delta_leftover;
   int numwins;
 
@@ -137,9 +137,13 @@ window_new_screen_size (int width, int height)
       if (!windows->next)
         {
           windows->height = 0;
-          free (windows->line_starts);
-	  free (windows->log_line_no);
-          windows->line_starts = NULL;
+		  if (windows->line_starts != NULL) {
+			  free (windows->line_starts);
+			  windows->line_starts = NULL;
+			  free (windows->log_line_no);
+		  }
+		  windows->log_line_no = NULL;
+          
           windows->line_count = 0;
           break;
         }
@@ -862,9 +866,11 @@ calculate_line_starts (WINDOW *window)
 void
 recalculate_line_starts (WINDOW *window)
 {
-  free (window->line_starts);
-  free (window->log_line_no);
-  calculate_line_starts (window);
+	if (window) {
+		free (window->line_starts);
+		free (window->log_line_no);
+  	  calculate_line_starts (window);
+  }
 }
 
 /* Return the number of first physical line corresponding to the logical
@@ -1785,6 +1791,10 @@ window_scan_line (WINDOW *win, int line, int phys,
 		  void *closure)
 {
   mbi_iterator_t iter;
+  char **line_starts = win->line_starts;
+  if (line_starts == NULL) {
+	  return 0;
+  }
   long cpos = win->line_starts[line] - win->node->contents;
   int delim = 0;
   char *endp;

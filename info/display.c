@@ -66,7 +66,7 @@ int display_was_interrupted_p = 0;
 void
 display_update_display (WINDOW *window)
 {
-  register WINDOW *win;
+  register WINDOW *win = NULL;
 
   display_was_interrupted_p = 0;
 
@@ -142,10 +142,11 @@ display_node_text(void *closure, size_t pline_index, size_t lline_index,
 	  terminal_goto_xy (0, win->first_row + pline_index);
 	  terminal_clear_to_eol ();
 	  entry->inverse = 0;
-	  entry->text[0] = '\0';
+	  entry->text = NULL;
 	  entry->textlen = 0;
 	}
 
+	if (entry->text != NULL) {
       i = find_diff (printed_line, pl_index,
 		     entry->text, strlen (entry->text), &off);
 
@@ -199,6 +200,7 @@ display_node_text(void *closure, size_t pline_index, size_t lline_index,
   if (pline_index + 1 == win->height)
     return 1;
 
+	}
   return 0;
 }
 
@@ -233,7 +235,7 @@ display_update_one_window (WINDOW *win)
       struct display_node_closure dnc;
 
       dnc.win = win;
-      dnc.display = the_display;
+      dnc.display = display;
       
       line_index = process_node_text (win,
 				      win->line_starts[win->pagetop],
@@ -255,7 +257,7 @@ display_update_one_window (WINDOW *win)
       if (entry && entry->textlen)
         {
           entry->textlen = 0;
-          entry->text[0] = '\0';
+          entry->text = NULL;
 
           terminal_goto_xy (0, win->first_row + line_index);
           terminal_clear_to_eol ();
